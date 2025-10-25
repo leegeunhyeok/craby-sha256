@@ -1,3 +1,5 @@
+use sha2::{Digest, Sha256};
+
 use crate::ffi::bridging::*;
 use crate::generated::*;
 use crate::types::*;
@@ -16,6 +18,6 @@ impl CrabySha256Spec for CrabySha256 {
     }
 
     fn digest(&mut self, data: &str) -> String {
-        unimplemented!();
+        format!("{:x}", Sha256::digest(data.as_bytes()))
     }
 }

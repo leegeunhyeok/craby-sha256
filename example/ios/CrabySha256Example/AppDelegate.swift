@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window = UIWindow(frame: UIScreen.main.bounds)
 
     factory.startReactNative(
-      withModuleName: "CrabySha256",
+      withModuleName: "CrabySha256Example",
       in: window,
       launchOptions: launchOptions
     )

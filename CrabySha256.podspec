@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.authors      = package["author"]
 
   s.platforms    = { :ios => min_ios_version_supported }
-  s.source       = { :git => "https://github.com/leegeunhyeok/craby-sha256", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/leegeunhyeok/craby-sha256.git", :tag => "#{s.version}" }
 
   s.source_files = ["ios/**/*.{h,m,mm,cc,cpp}", "cpp/**/*.{hpp,cpp}"]
   s.private_header_files = "ios/include/*.h"

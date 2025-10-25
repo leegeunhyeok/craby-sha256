@@ -1,4 +1,4 @@
-package com.crabysha256
+package com.crabysha256example
 
 import android.app.Application
 import com.facebook.react.PackageList

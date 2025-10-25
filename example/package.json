@@ -1,5 +1,5 @@
 {
-  "name": "CrabySha256",
+  "name": "CrabySha256Example",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,6 +14,8 @@
     "craby-sha256": "workspace:*",
     "react": "19.1.1",
     "react-native": "0.82.1",
+    "react-native-nitro-modules": "^0.31.2",
+    "react-native-quick-crypto": "^0.7.17",
     "react-native-safe-area-context": "^5.5.2"
   },
   "devDependencies": {

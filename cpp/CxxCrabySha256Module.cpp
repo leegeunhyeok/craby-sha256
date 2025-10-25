@@ -2,7 +2,6 @@
 #include "CxxCrabySha256Module.hpp"
 #include "cxx.h"
 #include "bridging-generated.hpp"
-#include "utils.hpp"
 #include <react/bridging/Bridging.h>
 
 using namespace facebook;
@@ -19,7 +18,7 @@ CxxCrabySha256Module::CxxCrabySha256Module(
     craby::bridging::createCrabySha256(reinterpret_cast<uintptr_t>(this)).into_raw(),
     [](craby::bridging::CrabySha256 *ptr) { rust::Box<craby::bridging::CrabySha256>::from_raw(ptr); }
   );
-  threadPool_ = std::make_shared<ThreadPool>(10);
+  threadPool_ = std::make_shared<craby::utils::ThreadPool>(10);
   methodMap_["digest"] = MethodMetadata{1, &CxxCrabySha256Module::digest};
 }
 
