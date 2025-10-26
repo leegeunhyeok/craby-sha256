@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react';
 import { StatusBar, StyleSheet, Text, View, ActivityIndicator, ScrollView } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Sha256 } from 'craby-sha256';
+import CryptoJS from 'crypto-js';
 import QuickCrypto from 'react-native-quick-crypto';
 
 const INPUT = 'Hello, world!';
-const ITERATIONS = 10000;
+const ITERATIONS = 25000;
 
 function App() {
   const [benchmarkA, setBenchmarkA] = useState(null);
   const [benchmarkB, setBenchmarkB] = useState(null);
+  const [benchmarkC, setBenchmarkC] = useState(null);
   const [isCalculating, setIsCalculating] = useState(true);
 
   useEffect(() => {
@@ -42,6 +44,19 @@ function App() {
       setBenchmarkB({
         avg: averageB,
         total: totalTimeB,
+      });
+
+      // C: crypto-js
+      const startTimeC = performance.now();
+      for (let i = 0; i < ITERATIONS; i++) {
+        CryptoJS.SHA256(INPUT + i).toString();
+      }
+      const endTimeC = performance.now();
+      const totalTimeC = endTimeC - startTimeC;
+      const averageC = totalTimeC / ITERATIONS;
+      setBenchmarkC({
+        avg: averageC,
+        total: totalTimeC,
       });
 
       setIsCalculating(false);
@@ -106,6 +121,16 @@ function App() {
                   </Text>
                   <Text style={styles.benchmarkDetail}>
                     Total: {benchmarkB.total.toFixed(2)} ms
+                  </Text>
+                </View>
+
+                <View style={[styles.benchmarkCard, styles.libraryC]}>
+                  <Text style={styles.libraryName}>crypto-js</Text>
+                  <Text style={styles.benchmarkValue}>
+                    {benchmarkC.avg.toFixed(4)} ms
+                  </Text>
+                  <Text style={styles.benchmarkDetail}>
+                    Total: {benchmarkC.total.toFixed(2)} ms
                   </Text>
                 </View>
               </>
@@ -222,6 +247,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0e8f8',
     borderWidth: 1.5,
     borderColor: '#9b59b6',
+  },
+  libraryC: {
+    backgroundColor: '#dff5d3',
+    borderWidth: 1.5,
+    borderColor: '#77dd77',
   },
   libraryName: {
     fontSize: 14,

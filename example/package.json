@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native/new-app-screen": "0.82.1",
     "craby-sha256": "workspace:*",
+    "crypto-js": "^4.2.0",
     "react": "19.1.1",
     "react-native": "0.82.1",
     "react-native-nitro-modules": "^0.31.2",
@@ -30,6 +31,7 @@
     "@react-native/eslint-config": "0.82.1",
     "@react-native/metro-config": "0.82.1",
     "@react-native/typescript-config": "0.82.1",
+    "@types/crypto-js": "^4",
     "@types/jest": "^29.5.13",
     "@types/react": "^19.1.1",
     "@types/react-test-renderer": "^19.1.0",
