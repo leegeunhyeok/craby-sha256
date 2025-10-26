@@ -2,19 +2,20 @@ use sha2::{Digest, Sha256};
 
 use crate::ffi::bridging::*;
 use crate::generated::*;
+use crate::context::*;
 use crate::types::*;
 
 pub struct CrabySha256 {
-    id: usize,
+    ctx: Context,
 }
 
 impl CrabySha256Spec for CrabySha256 {
-    fn new(id: usize) -> Self {
-        CrabySha256 { id }
+    fn new(ctx: Context) -> Self {
+        CrabySha256 { ctx }
     }
 
     fn id(&self) -> usize {
-        self.id
+        self.ctx.id
     }
 
     fn digest(&mut self, data: &str) -> String {

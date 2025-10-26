@@ -2,10 +2,11 @@
 // Hash: a3b76376dd455c3f
 #[rustfmt::skip]
 use crate::ffi::bridging::*;
+use crate::context::*;
 use crate::types::*;
 
 pub trait CrabySha256Spec {
-    fn new(id: usize) -> Self;
+    fn new(ctx: Context) -> Self;
     fn id(&self) -> usize;
     fn digest(&mut self, data: &str) -> String;
 }

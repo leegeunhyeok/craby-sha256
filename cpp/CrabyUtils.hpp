@@ -31,7 +31,7 @@ public:
           {
             std::unique_lock<std::mutex> lock(this->mutex);
             this->condition.wait(
-                                 lock, [this] { return this->stop || !this->tasks.empty(); });
+                lock, [this] { return this->stop || !this->tasks.empty(); });
 
             if (this->stop && this->tasks.empty()) {
               return;
@@ -76,7 +76,14 @@ public:
   }
 
   ~ThreadPool() {
-    shutdown();
+    {
+      std::unique_lock<std::mutex> lock(mutex);
+      stop = true;
+    }
+    condition.notify_all();
+    for (std::thread &worker : workers) {
+      worker.join();
+    }
   }
 };
 

@@ -472,7 +472,7 @@ extern "C" {
 ::std::size_t craby$bridging$cxxbridge1$CrabySha256$operator$sizeof() noexcept;
 ::std::size_t craby$bridging$cxxbridge1$CrabySha256$operator$alignof() noexcept;
 
-::craby::bridging::CrabySha256 *craby$bridging$cxxbridge1$create_craby_sha_256(::std::size_t id) noexcept;
+::craby::bridging::CrabySha256 *craby$bridging$cxxbridge1$create_craby_sha_256(::std::size_t id, ::rust::Str data_path) noexcept;
 
 ::rust::repr::PtrLen craby$bridging$cxxbridge1$craby_sha_256_digest(::craby::bridging::CrabySha256 &it_, ::rust::Str data, ::rust::String *return$) noexcept;
 } // extern "C"
@@ -485,8 +485,8 @@ extern "C" {
   return craby$bridging$cxxbridge1$CrabySha256$operator$alignof();
 }
 
-::rust::Box<::craby::bridging::CrabySha256> createCrabySha256(::std::size_t id) noexcept {
-  return ::rust::Box<::craby::bridging::CrabySha256>::from_raw(craby$bridging$cxxbridge1$create_craby_sha_256(id));
+::rust::Box<::craby::bridging::CrabySha256> createCrabySha256(::std::size_t id, ::rust::Str data_path) noexcept {
+  return ::rust::Box<::craby::bridging::CrabySha256>::from_raw(craby$bridging$cxxbridge1$create_craby_sha_256(id, data_path));
 }
 
 ::rust::String digest(::craby::bridging::CrabySha256 &it_, ::rust::Str data) {

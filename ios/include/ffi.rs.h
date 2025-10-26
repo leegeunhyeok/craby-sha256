@@ -405,7 +405,7 @@ private:
 };
 #endif // CXXBRIDGE1_STRUCT_craby$bridging$CrabySha256
 
-::rust::Box<::craby::bridging::CrabySha256> createCrabySha256(::std::size_t id) noexcept;
+::rust::Box<::craby::bridging::CrabySha256> createCrabySha256(::std::size_t id, ::rust::Str data_path) noexcept;
 
 ::rust::String digest(::craby::bridging::CrabySha256 &it_, ::rust::Str data);
 } // namespace bridging

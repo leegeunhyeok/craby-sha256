@@ -13,6 +13,7 @@ namespace crabysha256 {
 class JSI_EXPORT CxxCrabySha256Module : public facebook::react::TurboModule {
 public:
   static constexpr const char *kModuleName = "CrabySha256";
+  static std::string dataPath;
 
   CxxCrabySha256Module(std::shared_ptr<facebook::react::CallInvoker> jsInvoker);
   ~CxxCrabySha256Module();

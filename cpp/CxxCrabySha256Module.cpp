@@ -9,13 +9,17 @@ using namespace facebook;
 namespace craby {
 namespace crabysha256 {
 
+std::string CxxCrabySha256Module::dataPath = std::string();
+
 CxxCrabySha256Module::CxxCrabySha256Module(
     std::shared_ptr<react::CallInvoker> jsInvoker)
     : TurboModule(CxxCrabySha256Module::kModuleName, jsInvoker) {
   // No signals
   callInvoker_ = std::move(jsInvoker);
   module_ = std::shared_ptr<craby::bridging::CrabySha256>(
-    craby::bridging::createCrabySha256(reinterpret_cast<uintptr_t>(this)).into_raw(),
+    craby::bridging::createCrabySha256(
+      reinterpret_cast<uintptr_t>(this),
+      rust::Str(dataPath.data(), dataPath.size())).into_raw(),
     [](craby::bridging::CrabySha256 *ptr) { rust::Box<craby::bridging::CrabySha256>::from_raw(ptr); }
   );
   threadPool_ = std::make_shared<craby::utils::ThreadPool>(10);
