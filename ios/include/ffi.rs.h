@@ -384,15 +384,18 @@ std::size_t align_of() {
 } // namespace rust
 
 namespace craby {
-  namespace bridging {
-    struct CrabySha256;
+  namespace crabysha256 {
+    namespace bridging {
+      struct CrabySha256;
+    }
   }
 }
 
 namespace craby {
+namespace crabysha256 {
 namespace bridging {
-#ifndef CXXBRIDGE1_STRUCT_craby$bridging$CrabySha256
-#define CXXBRIDGE1_STRUCT_craby$bridging$CrabySha256
+#ifndef CXXBRIDGE1_STRUCT_craby$crabysha256$bridging$CrabySha256
+#define CXXBRIDGE1_STRUCT_craby$crabysha256$bridging$CrabySha256
 struct CrabySha256 final : public ::rust::Opaque {
   ~CrabySha256() = delete;
 
@@ -403,12 +406,13 @@ private:
     static ::std::size_t align() noexcept;
   };
 };
-#endif // CXXBRIDGE1_STRUCT_craby$bridging$CrabySha256
+#endif // CXXBRIDGE1_STRUCT_craby$crabysha256$bridging$CrabySha256
 
-::rust::Box<::craby::bridging::CrabySha256> createCrabySha256(::std::size_t id, ::rust::Str data_path) noexcept;
+::rust::Box<::craby::crabysha256::bridging::CrabySha256> createCrabySha256(::std::size_t id, ::rust::Str data_path) noexcept;
 
-::rust::String digest(::craby::bridging::CrabySha256 &it_, ::rust::Str data);
+::rust::String digest(::craby::crabysha256::bridging::CrabySha256 &it_, ::rust::Str data);
 } // namespace bridging
+} // namespace crabysha256
 } // namespace craby
 
 #ifdef __clang__

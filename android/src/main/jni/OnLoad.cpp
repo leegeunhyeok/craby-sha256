@@ -5,16 +5,16 @@
 
 jint JNI_OnLoad(JavaVM *vm, void *reserved) {
   facebook::react::registerCxxModuleToGlobalModuleMap(
-    craby::crabysha256::CxxCrabySha256Module::kModuleName,
+    craby::crabysha256::modules::CxxCrabySha256Module::kModuleName,
     [](std::shared_ptr<facebook::react::CallInvoker> jsInvoker) {
-      return std::make_shared<craby::crabysha256::CxxCrabySha256Module>(jsInvoker);
+      return std::make_shared<craby::crabysha256::modules::CxxCrabySha256Module>(jsInvoker);
     });
   return JNI_VERSION_1_6;
 }
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_crabysha256_CrabySha256Package_nativeSetDataPath(JNIEnv *env, jclass clazz, jstring jDataPath) {
+Java_rs_craby_crabysha256_CrabySha256Package_nativeSetDataPath(JNIEnv *env, jclass clazz, jstring jDataPath) {
   auto dataPath = std::string(env->GetStringUTFChars(jDataPath, nullptr));
-  craby::crabysha256::CxxCrabySha256Module::dataPath = dataPath;
+  craby::crabysha256::modules::CxxCrabySha256Module::dataPath = dataPath;
 }

@@ -447,15 +447,18 @@ public:
 } // namespace rust
 
 namespace craby {
-  namespace bridging {
-    struct CrabySha256;
+  namespace crabysha256 {
+    namespace bridging {
+      struct CrabySha256;
+    }
   }
 }
 
 namespace craby {
+namespace crabysha256 {
 namespace bridging {
-#ifndef CXXBRIDGE1_STRUCT_craby$bridging$CrabySha256
-#define CXXBRIDGE1_STRUCT_craby$bridging$CrabySha256
+#ifndef CXXBRIDGE1_STRUCT_craby$crabysha256$bridging$CrabySha256
+#define CXXBRIDGE1_STRUCT_craby$crabysha256$bridging$CrabySha256
 struct CrabySha256 final : public ::rust::Opaque {
   ~CrabySha256() = delete;
 
@@ -466,59 +469,60 @@ private:
     static ::std::size_t align() noexcept;
   };
 };
-#endif // CXXBRIDGE1_STRUCT_craby$bridging$CrabySha256
+#endif // CXXBRIDGE1_STRUCT_craby$crabysha256$bridging$CrabySha256
 
 extern "C" {
-::std::size_t craby$bridging$cxxbridge1$CrabySha256$operator$sizeof() noexcept;
-::std::size_t craby$bridging$cxxbridge1$CrabySha256$operator$alignof() noexcept;
+::std::size_t craby$crabysha256$bridging$cxxbridge1$CrabySha256$operator$sizeof() noexcept;
+::std::size_t craby$crabysha256$bridging$cxxbridge1$CrabySha256$operator$alignof() noexcept;
 
-::craby::bridging::CrabySha256 *craby$bridging$cxxbridge1$create_craby_sha_256(::std::size_t id, ::rust::Str data_path) noexcept;
+::craby::crabysha256::bridging::CrabySha256 *craby$crabysha256$bridging$cxxbridge1$create_craby_sha_256(::std::size_t id, ::rust::Str data_path) noexcept;
 
-::rust::repr::PtrLen craby$bridging$cxxbridge1$craby_sha_256_digest(::craby::bridging::CrabySha256 &it_, ::rust::Str data, ::rust::String *return$) noexcept;
+::rust::repr::PtrLen craby$crabysha256$bridging$cxxbridge1$craby_sha_256_digest(::craby::crabysha256::bridging::CrabySha256 &it_, ::rust::Str data, ::rust::String *return$) noexcept;
 } // extern "C"
 
 ::std::size_t CrabySha256::layout::size() noexcept {
-  return craby$bridging$cxxbridge1$CrabySha256$operator$sizeof();
+  return craby$crabysha256$bridging$cxxbridge1$CrabySha256$operator$sizeof();
 }
 
 ::std::size_t CrabySha256::layout::align() noexcept {
-  return craby$bridging$cxxbridge1$CrabySha256$operator$alignof();
+  return craby$crabysha256$bridging$cxxbridge1$CrabySha256$operator$alignof();
 }
 
-::rust::Box<::craby::bridging::CrabySha256> createCrabySha256(::std::size_t id, ::rust::Str data_path) noexcept {
-  return ::rust::Box<::craby::bridging::CrabySha256>::from_raw(craby$bridging$cxxbridge1$create_craby_sha_256(id, data_path));
+::rust::Box<::craby::crabysha256::bridging::CrabySha256> createCrabySha256(::std::size_t id, ::rust::Str data_path) noexcept {
+  return ::rust::Box<::craby::crabysha256::bridging::CrabySha256>::from_raw(craby$crabysha256$bridging$cxxbridge1$create_craby_sha_256(id, data_path));
 }
 
-::rust::String digest(::craby::bridging::CrabySha256 &it_, ::rust::Str data) {
+::rust::String digest(::craby::crabysha256::bridging::CrabySha256 &it_, ::rust::Str data) {
   ::rust::MaybeUninit<::rust::String> return$;
-  ::rust::repr::PtrLen error$ = craby$bridging$cxxbridge1$craby_sha_256_digest(it_, data, &return$.value);
+  ::rust::repr::PtrLen error$ = craby$crabysha256$bridging$cxxbridge1$craby_sha_256_digest(it_, data, &return$.value);
   if (error$.ptr) {
     throw ::rust::impl<::rust::Error>::error(error$);
   }
   return ::std::move(return$.value);
 }
 } // namespace bridging
+} // namespace crabysha256
 } // namespace craby
 
 extern "C" {
-::craby::bridging::CrabySha256 *cxxbridge1$box$craby$bridging$CrabySha256$alloc() noexcept;
-void cxxbridge1$box$craby$bridging$CrabySha256$dealloc(::craby::bridging::CrabySha256 *) noexcept;
-void cxxbridge1$box$craby$bridging$CrabySha256$drop(::rust::Box<::craby::bridging::CrabySha256> *ptr) noexcept;
+::craby::crabysha256::bridging::CrabySha256 *cxxbridge1$box$craby$crabysha256$bridging$CrabySha256$alloc() noexcept;
+void cxxbridge1$box$craby$crabysha256$bridging$CrabySha256$dealloc(::craby::crabysha256::bridging::CrabySha256 *) noexcept;
+void cxxbridge1$box$craby$crabysha256$bridging$CrabySha256$drop(::rust::Box<::craby::crabysha256::bridging::CrabySha256> *ptr) noexcept;
 } // extern "C"
 
 namespace rust {
 inline namespace cxxbridge1 {
 template <>
-::craby::bridging::CrabySha256 *Box<::craby::bridging::CrabySha256>::allocation::alloc() noexcept {
-  return cxxbridge1$box$craby$bridging$CrabySha256$alloc();
+::craby::crabysha256::bridging::CrabySha256 *Box<::craby::crabysha256::bridging::CrabySha256>::allocation::alloc() noexcept {
+  return cxxbridge1$box$craby$crabysha256$bridging$CrabySha256$alloc();
 }
 template <>
-void Box<::craby::bridging::CrabySha256>::allocation::dealloc(::craby::bridging::CrabySha256 *ptr) noexcept {
-  cxxbridge1$box$craby$bridging$CrabySha256$dealloc(ptr);
+void Box<::craby::crabysha256::bridging::CrabySha256>::allocation::dealloc(::craby::crabysha256::bridging::CrabySha256 *ptr) noexcept {
+  cxxbridge1$box$craby$crabysha256$bridging$CrabySha256$dealloc(ptr);
 }
 template <>
-void Box<::craby::bridging::CrabySha256>::drop() noexcept {
-  cxxbridge1$box$craby$bridging$CrabySha256$drop(this);
+void Box<::craby::crabysha256::bridging::CrabySha256>::drop() noexcept {
+  cxxbridge1$box$craby$crabysha256$bridging$CrabySha256$drop(this);
 }
 } // namespace cxxbridge1
 } // namespace rust

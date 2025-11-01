@@ -8,6 +8,7 @@ using namespace facebook;
 
 namespace craby {
 namespace crabysha256 {
+namespace modules {
 
 std::string CxxCrabySha256Module::dataPath = std::string();
 
@@ -16,13 +17,13 @@ CxxCrabySha256Module::CxxCrabySha256Module(
     : TurboModule(CxxCrabySha256Module::kModuleName, jsInvoker) {
   // No signals
   callInvoker_ = std::move(jsInvoker);
-  module_ = std::shared_ptr<craby::bridging::CrabySha256>(
-    craby::bridging::createCrabySha256(
+  module_ = std::shared_ptr<craby::crabysha256::bridging::CrabySha256>(
+    craby::crabysha256::bridging::createCrabySha256(
       reinterpret_cast<uintptr_t>(this),
       rust::Str(dataPath.data(), dataPath.size())).into_raw(),
-    [](craby::bridging::CrabySha256 *ptr) { rust::Box<craby::bridging::CrabySha256>::from_raw(ptr); }
+    [](craby::crabysha256::bridging::CrabySha256 *ptr) { rust::Box<craby::crabysha256::bridging::CrabySha256>::from_raw(ptr); }
   );
-  threadPool_ = std::make_shared<craby::utils::ThreadPool>(10);
+  threadPool_ = std::make_shared<craby::crabysha256::utils::ThreadPool>(10);
   methodMap_["digest"] = MethodMetadata{1, &CxxCrabySha256Module::digest};
 }
 
@@ -59,15 +60,16 @@ jsi::Value CxxCrabySha256Module::digest(jsi::Runtime &rt,
 
     auto arg0$raw = args[0].asString(rt).utf8(rt);
     auto arg0 = rust::Str(arg0$raw.data(), arg0$raw.size());
-    auto ret = craby::bridging::digest(*it_, arg0);
+    auto ret = craby::crabysha256::bridging::digest(*it_, arg0);
 
     return react::bridging::toJs(rt, ret);
   } catch (const jsi::JSError &err) {
     throw err;
   } catch (const std::exception &err) {
-    throw jsi::JSError(rt, craby::utils::errorMessage(err));
+    throw jsi::JSError(rt, craby::crabysha256::utils::errorMessage(err));
   }
 }
 
+} // namespace modules
 } // namespace crabysha256
 } // namespace craby

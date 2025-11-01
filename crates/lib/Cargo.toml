@@ -5,11 +5,12 @@ edition.workspace = true
 
 [dependencies]
 anyhow = "1.0.99"
+craby = "0.1.0-beta"
 cxx = "1.0.180"
 sha2 = "0.10.9"
 
 [build-dependencies]
-cxx-build = "1.0.180"
+craby_build = { version = "0.1.0-beta", features = ["cxx"] }
 
 [lib]
 name = "crabysha256"

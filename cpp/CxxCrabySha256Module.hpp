@@ -9,6 +9,7 @@
 
 namespace craby {
 namespace crabysha256 {
+namespace modules {
 
 class JSI_EXPORT CxxCrabySha256Module : public facebook::react::TurboModule {
 public:
@@ -26,7 +27,7 @@ public:
 
 protected:
   std::shared_ptr<facebook::react::CallInvoker> callInvoker_;
-  std::shared_ptr<craby::bridging::CrabySha256> module_;
+  std::shared_ptr<craby::crabysha256::bridging::CrabySha256> module_;
   std::atomic<bool> invalidated_{false};
   std::atomic<size_t> nextListenerId_{0};
   std::mutex listenersMutex_;
@@ -34,8 +35,9 @@ protected:
     std::string,
     std::unordered_map<size_t, std::shared_ptr<facebook::jsi::Function>>>
     listenersMap_;
-  std::shared_ptr<craby::utils::ThreadPool> threadPool_;
+  std::shared_ptr<craby::crabysha256::utils::ThreadPool> threadPool_;
 };
 
+} // namespace modules
 } // namespace crabysha256
 } // namespace craby

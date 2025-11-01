@@ -11,15 +11,16 @@
 #include <vector>
 
 namespace craby {
+namespace crabysha256 {
 namespace utils {
 
 class ThreadPool {
 private:
-  std::vector<std::thread> workers;
-  std::queue<std::function<void()>> tasks;
+  bool stop;
   std::mutex mutex;
   std::condition_variable condition;
-  bool stop;
+  std::queue<std::function<void()>> tasks;
+  std::vector<std::thread> workers;
 
 public:
   ThreadPool(size_t num_threads = 10) : stop(false) {
@@ -76,14 +77,7 @@ public:
   }
 
   ~ThreadPool() {
-    {
-      std::unique_lock<std::mutex> lock(mutex);
-      stop = true;
-    }
-    condition.notify_all();
-    for (std::thread &worker : workers) {
-      worker.join();
-    }
+    shutdown();
   }
 };
 
@@ -93,4 +87,5 @@ inline std::string errorMessage(const std::exception &err) {
 }
 
 } // namespace utils
+} // namespace crabysha256
 } // namespace craby

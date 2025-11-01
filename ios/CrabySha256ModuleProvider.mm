@@ -12,12 +12,12 @@
   const char *cDataPath = [[self getDataPath] UTF8String];
   std::string dataPath(cDataPath);
 
-  craby::crabysha256::CxxCrabySha256Module::dataPath = dataPath;
+  craby::crabysha256::modules::CxxCrabySha256Module::dataPath = dataPath;
 
   facebook::react::registerCxxModuleToGlobalModuleMap(
-      craby::crabysha256::CxxCrabySha256Module::kModuleName,
+      craby::crabysha256::modules::CxxCrabySha256Module::kModuleName,
       [](std::shared_ptr<facebook::react::CallInvoker> jsInvoker) {
-        return std::make_shared<craby::crabysha256::CxxCrabySha256Module>(jsInvoker);
+        return std::make_shared<craby::crabysha256::modules::CxxCrabySha256Module>(jsInvoker);
       });
 }
 
