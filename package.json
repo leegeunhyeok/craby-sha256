@@ -1,6 +1,6 @@
 {
   "name": "craby-sha256",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SHA-256 Hash function for React Native",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
